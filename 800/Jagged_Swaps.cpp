@@ -14,21 +14,11 @@ void init_code(){
 }
 
 int main(){
-	init_code();
+	string s{};
+	s.push_back('s');
 	
-	int t{};
-
-	cin>>t;
-
-	while(t){
-		int n{};
-		cin>>n;
-
-		if(n%3 ==0)cout<<"Second"<<endl;
-		else if((n-1)%3 ==0 || (n+1)%3 ==0)
-			cout<<"First"<<endl;
-
-		t--;
-	}
+	unordered_map<string,int>mp{};
+	mp[s]++;
+	cout<<mp[s]<<endl;
 
 }
