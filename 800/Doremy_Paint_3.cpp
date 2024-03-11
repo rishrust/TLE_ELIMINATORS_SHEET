@@ -17,42 +17,39 @@ int main(){
 	init_code();
 	int t{};
 	cin>>t;
+
 	while(t){
-		vector<int>arr{};
 		int n{};
-		arr={};
 		cin>>n;
+		vector<int> arr(n,0);
+		unordered_map<int,int>mp{}; 
+		mp.clear();
 
+		for(int i=0; i<n; i++ ){
+			cin>>arr[i];
+			mp[arr[i]]++;
 
-		for(int i=0; i<n; i++){
-			int tmp{};
-			cin>>tmp;
-
-			arr.push_back(tmp);
 		}
-
 		
-		bool ans=true;
-		for(int i=n; i>=1; i--){
-			if(arr[0]==i && arr.size()!=1)
-				{ans=false; break;}
+		bool ans{}; ans=false;
 
-			for(int j=0; j<arr.size(); j++)
-				if(arr[j]==i)
-					{arr.erase(arr.begin()+j); break;}
-			
+		if(mp.size()>2)ans=false;
+		else if(mp.size() ==1)
+				ans=true;
+
+		else{
+			int n1{-1},n2{-2};
+			n1= (*(mp.begin())).second;
+			n2=(*(++mp.begin())).second;
+
+			if(abs(n1-n2)>1)ans=false;
+			else ans=true;
 		}
+
 
 		if(ans)cout<<"YES"<<endl;
 		else cout<<"NO"<<endl;
 
-
 		t--;
-	}
-	
+	}	
 }
-
-
-
-
-
